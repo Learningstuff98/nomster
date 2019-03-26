@@ -32,3 +32,48 @@
     color: #00C122;
     font-family: 'Slabo 27px', serif;
   }
+
+  .pagination {
+    background: rgb(105, 97, 97);
+    cursor: default;
+    height: 32px;
+    a, span, em {
+      padding: 0.2em 0.5em;
+      display: block;
+      float: left;
+      margin-right: 1px;
+    }
+    .disabled {
+      color: #999999;
+      border: 1px solid #dddddd;
+    }
+    .current {
+      font-style: normal;
+      font-weight: bold;
+      background: #00C122;
+      color: white;
+      border: 1px solid #00C122;
+    }
+    a {
+      text-decoration: none;
+      color: #00C122;
+      border: 1px solid #9aafe5;
+      &:hover, &:focus {
+        color: #000033;
+        border-color: #000033;
+      }
+    }
+    .page_info {
+      background: #00C122;
+      color: white;
+      padding: 0.4em 0.6em;
+      width: 22em;
+      margin-bottom: 0.3em;
+      text-align: center;
+      b {
+        color: #000033;
+        background: #00C122 + 60;
+        padding: 0.1em 0.25em;
+      }
+    }
+  }
