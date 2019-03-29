@@ -5,6 +5,7 @@
     <h1><%= place.name %></h1>
     <i><%= place.address %></i><br /><br />
     <p><%= place.description %></p><br />
+    <%= link_to place.name + ' information', place_path(place) %><br />
 
     <% if place.user.present? %>
       <small><%= place.user.email %></small>
