@@ -3,4 +3,7 @@
   <i><%= @place.address %></i>
   <br/><br/>
   <p><%= @place.description %></p>
+  <div>
+    <%= link_to 'Edit this restaurant', edit_place_path(@place) %>
+  </div>
 </div>
