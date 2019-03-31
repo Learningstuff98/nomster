@@ -6,8 +6,8 @@
   <div>
     <% if current_user && current_user == @place.user %>
       <%= link_to 'Edit this restaurant', edit_place_path(@place) %>
+      <br/>
+      <%= link_to 'Delete this restaurant', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this place?'} %>
     <% end %>  
-    <br/>
-    <%= link_to 'Delete this restaurant', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this place?'} %>
   </div>
 </div>
