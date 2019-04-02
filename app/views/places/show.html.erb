@@ -4,7 +4,7 @@
   <br/><br/>
   <p><%= @place.description %></p>
 
-
+<% if @place.latitude.present? && @place.longitude.present? %>
   <script>
 
     function initMap() {
@@ -29,7 +29,7 @@
 
   <div id="map"></div>
 
- 
+  <% end %>
 
   <br />
 
