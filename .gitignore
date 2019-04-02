@@ -28,6 +28,3 @@
 
 # Ignore application configuration
 /config/application.yml
-
-# Ignore the show page for each place
-/views/places/show.html.erb
