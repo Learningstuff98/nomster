@@ -4,7 +4,7 @@
   <br/><br/>
   <p><%= @place.description %></p>
 
-<% if @place.latitude.present? && @place.longitude.present? %>
+  <% if @place.latitude.present? && @place.longitude.present? %>
   <script>
 
     function initMap() {
@@ -33,17 +33,37 @@
 
   <br />
 
-<%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
-  <%= f.input :message %>
-  <%= f.input :rating %>
-  <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
-<% end %>
+  <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
+    <%= f.input :message %>
+    <%= f.input :rating %>
+    <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
+  <% end %>
 
+  <br />
+ 
   <div>
     <% if current_user && current_user == @place.user %>
       <%= link_to 'Edit this restaurant', edit_place_path(@place) %>
-      <br/>
+      <br/><br />
       <%= link_to 'Delete this restaurant', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this place?'} %>
     <% end %>  
   </div>
+
+  <br />
+
+  <h1>Comments</h1>
+
+  <br />
+
+  <% @place.comments.each do |comment| %>
+    <div>
+      <blockquote>
+        <small><%= comment.user.email %></small>
+        <br />
+        <b><%= comment.rating %></b> -
+          <%= comment.message %>
+      </blockquote>
+    </div>
+  <% end %>
+
 </div>
