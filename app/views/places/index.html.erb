@@ -21,4 +21,11 @@
       </div>
     <% end %>
   </div>
+
+  <% place.photos.each do |photo| %>
+    <h3><%= photo.caption %></h3>
+    <br />
+    <%= image_tag photo.picture.url, class: 'place_image' %>  
+  <% end %>
+
 <% end %>

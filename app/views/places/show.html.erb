@@ -111,8 +111,10 @@
   <br />
   
   <% @place.photos.each do |photo| %>
-    <%= image_tag photo.picture.url %>
-    <%= photo.caption %>
+    <h3><%= photo.caption %></h3>
+    <br />
+    <%= image_tag photo.picture.url, class: 'place_image' %>  
+    <br /><br />
   <% end %>
   
 </div>
