@@ -1,16 +1,24 @@
 Rails.application.configure do
 
-  config.action_mailer.delivery_method = :smtp
+  # To get email functionality back, un-comment the config.action_mailer.smtp_settings hash.
 
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "example.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV['GMAIL_ADDRESS'],
-    password: ENV['GMAIL_PASSWORD']
-  }
+  # Also, un-comment config.action_mailer.delivery_method = :smtp, and comment out 
+  # config.action_mailer.delivery_method = :test. See lesson 43 of the nomster app for
+  # more details.
+
+  config.action_mailer.delivery_method = :test
+
+  # config.action_mailer.delivery_method = :smtp
+
+  # config.action_mailer.smtp_settings = {
+  #   address: "smtp.gmail.com",
+  #   port: 587,
+  #   domain: "example.com",
+  #   authentication: "plain",
+  #   enable_starttls_auto: true,
+  #   user_name: ENV['GMAIL_ADDRESS'],
+  #   password: ENV['GMAIL_PASSWORD']
+  # }
 
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   # Settings specified here will take precedence over those in config/application.rb.
