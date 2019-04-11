@@ -6,7 +6,7 @@ Rails.application.configure do
   # config.action_mailer.delivery_method = :test. See lesson 43 of the nomster app for
   # more details.
 
-  config.action_mailer.delivery_method = :test
+  #config.action_mailer.delivery_method = :test
 
   # config.action_mailer.delivery_method = :smtp
 
