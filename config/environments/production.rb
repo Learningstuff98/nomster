@@ -1,5 +1,7 @@
 Rails.application.configure do
 
+  config.action_mailer.default_url_options = { host: 'nomster-andy-strube.herokuapp.com' }
+
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.sendgrid.net',
     port: '587',
@@ -10,7 +12,6 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  config.action_mailer.default_url_options = { host: 'nomster-andy-strube.herokuapp.com' }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
