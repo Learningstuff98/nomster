@@ -23,7 +23,7 @@
   </div>
   
   <div class="col-10 offset-1">
-  <% place.photos.each do |photo| %>
+  <% place.photos[0..0].each do |photo| %>
     <h3 class="photo_caption"><%= photo.caption %></h3>
     <br />
     <%= image_tag photo.picture.url, class: 'place_image' %> 

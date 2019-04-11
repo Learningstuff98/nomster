@@ -24,7 +24,7 @@
   </script>
 
   <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ5Jnfci7A2vUrEDQIduwy007xkfypplM&callback=initMap">
   </script>
 
   <div id="map"></div>
@@ -138,7 +138,7 @@
 
   <br />
   
-  <% @place.photos.each do |photo| %>
+  <% @place.photos.each do |photo| %> 
     <h3><%= photo.caption %></h3>
     <br />
     <%= image_tag photo.picture.url, class: 'place_image' %>  
