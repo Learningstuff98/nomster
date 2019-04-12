@@ -1,1 +1,9 @@
 <h1 class="user_show_text">The show page for users works</h1>
+
+<h1 class="user_show_text"><%= @user.email %></h1>
+
+<h3 class="user_show_text">Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
+
+<h3 class="user_show_text"><%= @user.comments.count %> total comments</h3>
+
+<h3 class="user_show_text"><%= @user.comments.where(rating: '5_stars').count %> total 5 star reviews</h3>
