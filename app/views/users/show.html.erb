@@ -1,4 +1,4 @@
-<div class="booyah-box">
+
   <div class='row'>
     <div class='col-4'>
       <%= image_tag 'user.png' %>
@@ -12,4 +12,28 @@
       <h3 class="user_show_text"><%= @user.comments.where(rating: '5_stars').count %> total 5 star reviews</h3>
     </div>  
   </div>
-</div> 
+
+<br /><br />
+
+<div class='user_show_text'>
+  <h1 class="text-center">Your Comments</h1>
+</div>
+
+<div class="row">
+  <% @user.comments.each do |comment| %>
+    <div class="col-12 col-sm-6">
+    <% if (defined?(comment.place.name)) %>
+      <h2 class="text-center user_show_text"><%= link_to comment.place.name, place_path(comment.place) %></h2>
+    <% end %>
+      <blockquote>
+        <small><%= comment.user.email %></small>
+        <br />
+        <% if comment.humanized_rating.present? %>
+          <b><%= comment.humanized_rating %></b> -
+        <% end %>
+        <br />
+        <%= comment.message %>
+      </blockquote>
+    </div>
+  <% end %>
+</div>
