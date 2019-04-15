@@ -1,17 +1,16 @@
 
-  <div class='row'>
-    <div class='col-4'>
-      <%= image_tag 'user.png' %>
-    </div>
-
-    <div class='col-8'> 
-      <h1 class="user_show_text">The show page for users works</h1>
-      <h1 class="user_show_text"><%= @user.email %></h1>
-      <h3 class="user_show_text">Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
-      <h3 class="user_show_text"><%= @user.comments.count %> total comments</h3>
-      <h3 class="user_show_text"><%= @user.comments.where(rating: '5_stars').count %> total 5 star reviews</h3>
-    </div>  
+<div class='row'>
+  <div class='col-4'>
+    <%= image_tag 'user.png' %>
   </div>
+
+  <div class='col-8'> 
+    <h1 class="user_show_text">The show page for users works</h1>
+    <h1 class="user_show_text"><%= @user.email %></h1>
+    <h3 class="user_show_text">Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>     <h3 class="user_show_text"><%= @user.comments.count %> total comments</h3>
+    <h3 class="user_show_text"><%= @user.comments.where(rating: '5_stars').count %> total 5 star reviews</h3>
+   </div>  
+</div>
 
 <br /><br />
 
@@ -19,11 +18,15 @@
   <h1 class="text-center">Your Comments</h1>
 </div>
 
+<br />
+
 <div class="row">
   <% @user.comments.each do |comment| %>
     <div class="col-12 col-sm-6">
     <% if (defined?(comment.place.name)) %>
       <h2 class="text-center user_show_text"><%= link_to comment.place.name, place_path(comment.place) %></h2>
+    <% else %>
+      <h5 class='user_show_text'>This resturant has been deleted by its user.</h5>
     <% end %>
       <blockquote>
         <small><%= comment.user.email %></small>
@@ -37,3 +40,36 @@
     </div>
   <% end %>
 </div>
+
+<br/><br/>
+
+<div class="clear"></div>
+
+<br/><br/>
+
+<div class='user_show_text'>
+  <h2 class="text-center">Your Places</h2>
+</div>
+
+<% @user.places.each do |place| %>
+    <div class="booyah-box col-10 offset-1">
+    <h1><%= place.name %></h1>
+    <i><%= place.address %></i><br /><br />
+    <p><%= place.description %></p><br />
+    <%= link_to ' information for ' + place.name, place_path(place) %><br />
+    <% if place.user.present? %>
+      <small><%= place.user.email %></small>
+    <% end %>
+    <% if place.comments.present? %>
+      <div class="col-12">
+        <blockquote>
+          <% if place.comments.last.humanized_rating.present? %>
+            <b><%= place.comments.last.humanized_rating %></b> -
+          <% end %>
+          <%= place.comments.last.message %>
+          <small><%= place.comments.last.user.email %></small>
+        </blockquote>
+      </div>
+    <% end %>
+  </div>
+<% end %>
