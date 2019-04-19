@@ -5,7 +5,7 @@ def find_missing_number(sequence)
       if element != 0
         return index if element != index
       end  
-      return 1 if element.to_i == 0
+      return 1 if element == 0
     end
     0
   end
