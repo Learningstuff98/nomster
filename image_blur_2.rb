@@ -14,7 +14,7 @@ class Image
       @array.each_with_index do |inner_array, inner_array_index_value|
         inner_array.each_with_index do |element, index|
           if element == 1 
-            if inner_array_index_value != 0
+            if inner_array_index_value != 0 && @array[inner_array_index_value - 1][index] == 0
               @array[inner_array_index_value - 1][index] = '1'    # top
             end
             if index != 0
@@ -23,24 +23,23 @@ class Image
             if index != inner_array.length - 1
               inner_array[index + 1] = '1'                        # right
             end
-            if inner_array_index_value != @array.length - 1
+            if inner_array_index_value != @array.length - 1 && @array[inner_array_index_value + 1][index] == 0
               @array[inner_array_index_value + 1][index] = '1'    # bottom
             end
           end
         end
       end
     end
-  
 
 end
   
   image = Image.new([
     [0, 0, 0, 0],
-    [0, 0, 0, 1],
+    [1, 0, 0, 0],
     [0, 0, 0, 0],
-    [1, 0, 0, 0]
+    [0, 0, 0, 1]
     ])
-  
+
   image.transform
 
   image.output_image
