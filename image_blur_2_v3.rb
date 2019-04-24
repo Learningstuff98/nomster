@@ -10,29 +10,31 @@ class Image
       end
     end
 
-    def find_coordinates   
-      @array.map.with_index do |inner_array, y|
-         inner_array.each_with_index do |number, x|
-            [x, y] if number == 1
-         end
-       end
-     end
+    def find_coordinates  
+      new_array = [] 
+      @array.each_with_index do |inner_array, y|
+        inner_array.each_with_index do |number, x|
+          new_array.push([x, y]) if number == 1
+        end
+      end
+      new_array
+    end
 
     def set_north(x, y)
-      if x - 1 >= 0
+      if x - 1 >= 0 && @array[x - 1][y] == 0
         @array[x - 1][y] = 1
       end
     end
 
     def set_south(x, y)
-      if x + 1 <= @array.length - 1
+      if x + 1 <= @array.length - 1 && @array[x + 1][y] == 0
         @array[x + 1][y] = 1
       end    
     end
 
     def set_east(x, y)
       if y + 1 <= @array[x].length - 1
-        @array[x][y + 1] = 1                  
+        @array[x][y + 1] = 1                
       end
     end
 
@@ -43,7 +45,7 @@ class Image
     end
 
     def blur   
-      find_coordinates.each do |x, y|
+      find_coordinates.each do |y, x|
         set_north(x, y) 
         set_south(x, y)
         set_east(x, y)
@@ -54,10 +56,10 @@ class Image
 end
   
   image = Image.new([
+    [1, 0, 0, 0],
     [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 1, 0]
+    [0, 1, 0, 0],
+    [0, 0, 0, 0]
     ])
 
   image.blur
